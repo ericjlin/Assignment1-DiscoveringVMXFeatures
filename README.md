@@ -3,22 +3,20 @@ CMPE 283 Assignment 1
 
 1. I did this assignment by myself.
 
-2. Steps to setup environment.
+2. Steps taken to setup environment.
 
-Step 1: VMware Fusion on Mac
+  1. Download Ubuntu 20.04 LTS for Desktop
+  2. Use Ubuntu .iso when creating a new VM on VMware 
+  3. When ask to update VM setting, leave all settings to default except for the hard disk space. Set disk space to 200GB. Not needed, but I also allocated 4 cores   to the guest VM. 
+  4. Set the VMX feature on for the guest OS in order to make the MSR to work ###
+    - Go to processor/memory in the Guest OS Settings
+    - Enable hypervisor applications in this virtual machine
+    - Enable IOMMU in this VM
+    - If these settings aren't turned on, the code will return all 0x00 as the guest VM doesn't support VMX operation.
 
-1. Download Ubuntu 20.04 LTS for Desktop
-2. Use Ubuntu .iso when creating a new VM on VMware 
-3. When ask to update VM setting, leave all settings to default except for the hard disk space. Set disk space to 200GB. Not needed, but I also allocated 4 cores to the guest VM. 
-4. Set the VMX feature on for the guest OS in order to make the MSR to work ###
-Go to processor/memory in the Guest OS Settings
-- Enable hypervisor applications in this virtual machine
-- Enable IOMMU in this VM
-If these settings aren't turned on, the code will return all 0x00 as the guest VM doesn't support VMX operation.
+  5. Ran into a network issue regarding guest VM on VMware.  https://pupuweb.com/solved-fix-nat-not-working-intermittently-vmware-fusion-after-macos-update/
 
-4. Ran into a network issue regarding guest VM on VMware.  https://pupuweb.com/solved-fix-nat-not-working-intermittently-vmware-fusion-after-macos-update/
-
-At first I try to run sudo apt-get update but this was failing to download some of the updates which in turn makes sudo apt install git fail.
+  At first I try to run sudo apt-get update but this was failing to download some of the updates which in turn makes sudo apt install git fail.
 I would get strange errors from the git download such as: “The following packages have unmet dependencies: git : Depends: liberror-perl but it is not installable….E: Unable to correct problems, you have held broken packages.” Doing anything like apt update or apt-get dist-upgrade followed by apt-get -f install doesn't work.
 I found out it was because of my network setting, I was using the bridge connection and it was recommended to use NAT. 
 
@@ -53,3 +51,5 @@ Assignment 2 Setup
 2. run cp /boot/config-5.8.0-25-generic ./.config
 3. make oldconfig. Hold enter to use all default values
 4. make -j 4 modules && make && sudo make modules_install && sudo make install
+    - this command took hours to complete so I left it running overnight
+    - j 4 option is to specify that I want to use four cores to run the make modules
