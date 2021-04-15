@@ -7,8 +7,8 @@ CMPE 283 Assignment 1
 
   1. Download Ubuntu 20.04 LTS for Desktop
   2. Use Ubuntu .iso when creating a new VM on VMware 
-  3. When ask to update VM setting, leave all settings to default except for the hard disk space. Set disk space to 200GB. Not needed, but I also allocated 4 cores   to the guest VM. 
-  4. Set the VMX feature on for the guest OS in order to make the MSR to work ###
+  4. When ask to update VM setting, leave all settings to default except for the hard disk space. Set disk space to 200GB. Not needed, but I also allocated 4 cores   to the guest VM. 
+  5. Set the VMX feature on for the guest OS in order to make the MSR to work ###
     - Go to processor/memory in the Guest OS Settings
     - Enable hypervisor applications in this virtual machine
     - Enable IOMMU in this VM
@@ -48,8 +48,12 @@ sudo add-apt-repository
 Assignment 2 Setup
 
 1. cd to /linux on the VM
-2. run cp /boot/config-5.8.0-25-generic ./.config
-3. make oldconfig. Hold enter to use all default values
-4. make -j 4 modules && make && sudo make modules_install && sudo make install
+2. Build your environment referencing https://wiki.ubuntu.com/Kernel/BuildYourOwnKernel
+    - sudo apt-get build-dep linux linux-image-$(uname -r)
+    - sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
+3. run "uname -a" and note down the version. We will be using the same version config from the ubuntu boot file in the next step.
+4. run cp /boot/config-5.8.0-25-generic ./.config
+5. make oldconfig. Hold enter to use all default values whenever the prompt ask for user inputs.
+6. make -j 4 modules && make && sudo make modules_install && sudo make install
     - this command took hours to complete so I left it running overnight
     - j 4 option is to specify that I want to use four cores to run the make modules
