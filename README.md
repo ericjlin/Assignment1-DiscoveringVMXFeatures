@@ -53,7 +53,7 @@ Assignment 2 Setup
     - sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
 3. run "uname -a" and note down the version. We will be using the same version config from the ubuntu boot file in the next step.
 4. run cp /boot/config-5.8.0-25-generic ./.config
-5. make oldconfig. Hold enter to use all default values whenever the prompt ask for user inputs.
+5. make oldconfig to update the config file. Hold enter to use all default values whenever the prompt ask for user inputs.
 6. make -j 4 modules && make && sudo make modules_install && sudo make install
     - this command took hours to complete so I left it running overnight
     - j 4 option is to specify that I want to use four cores to run the make modules
