@@ -34,6 +34,11 @@ CMPE 283 Assignment 1
   6. Install git:
     sudo apt-get update
     sudo apt install git
+    
+  7. Install make:
+     sudo apt install make
+     
+  8. Run sudo apt-get install build-essential to successfully make the file. Ran into a issue where it says gcc is not found which fails my make.
 
   7. Logged into GitHub in the guest VM. Create a new repository and git clone the repository into my VM.
 
