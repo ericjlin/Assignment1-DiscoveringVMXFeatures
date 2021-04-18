@@ -53,7 +53,7 @@ CMPE 283 Assignment 1
 
   11. To read the VMX configuration, run "sudo insmod cmpe283-1.ko"
 
-  12. Then run "sudo demsg" to view the output.
+  12. Then run "sudo dmesg" to view the output.
 
   13. To remove the kerbel module run "sudo rmmod cmpe283-1.ko".
 
