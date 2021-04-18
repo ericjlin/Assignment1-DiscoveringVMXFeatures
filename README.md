@@ -35,37 +35,34 @@ CMPE 283 Assignment 1
     sudo apt-get update
     sudo apt install git
     
-  7. Install make:
-     sudo apt install make
-     
-  8. Run sudo apt-get install build-essential to successfully make the file. Ran into a issue where it says gcc is not found which fails my make.
+  7. Build your environment referencing https://wiki.ubuntu.com/Kernel/BuildYourOwnKernel. 
+     This will install all tools such as "make" and gcc needed to build a kernel.
+      - sudo apt-get build-dep linux linux-image-$(uname -r)
+      - sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
 
-  7. Logged into GitHub in the guest VM. Create a new repository and git clone the repository into my VM.
+  8. Logged into GitHub in the guest VM. Create a new repository and git clone the repository into my VM.
 
-  8. Forked and cloned the linux repository in the guest VM. This step is mainly for assignment 2.
+  9. Forked and cloned the linux repository in the guest VM. This step is mainly for assignment 2.
 
-  9. I then signed into canvas on the guest VM. I downloaded both the cmpe283-1.c file for intel and the Makefile from the CMPE 283 section in canvas. 
+  10. I then signed into canvas on the guest VM. I downloaded both the cmpe283-1.c file for intel and the Makefile from the CMPE 283 section in canvas. 
     I made my changes to the code to include all the MSRs for the VMX configuration. 
     To do that I referenced the Intel SDM for the processor, secondary process, exit and entry capabilities.
     I then edited the detect_vmx_features to report capabilities for the additional control types.
   
-  10. cd into the assignment 1 repository. Run "make"
+  11. cd into the assignment 1 repository. Run "make"
 
-  11. To read the VMX configuration, run "sudo insmod cmpe283-1.ko"
+  12. To read the VMX configuration, run "sudo insmod cmpe283-1.ko"
 
-  12. Then run "sudo dmesg" to view the output.
+  13. Then run "sudo dmesg" to view the output.
 
-  13. To remove the kerbel module run "sudo rmmod cmpe283-1.ko".
+  14. To remove the kerbel module run "sudo rmmod cmpe283-1.ko".
 
   Assignment 2 Setup:
 
   1. cd to /linux on the VM
-  2. Build your environment referencing https://wiki.ubuntu.com/Kernel/BuildYourOwnKernel
-      - sudo apt-get build-dep linux linux-image-$(uname -r)
-      - sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
-  3. run "uname -a" and note down the version. We will be using the same version config from the ubuntu boot file in the next step.
-  4. run cp /boot/config-5.8.0-25-generic ./.config
-  5. make oldconfig to update the config file. Hold enter to use all default values whenever the prompt ask for user inputs.
-  6. make -j 4 modules && make && sudo make modules_install && sudo make install
+  2. run "uname -a" and note down the version. We will be using the same version config from the ubuntu boot file in the next step.
+  3. run cp /boot/config-5.8.0-25-generic ./.config
+  4. make oldconfig to update the config file. Hold enter to use all default values whenever the prompt ask for user inputs.
+  5. make -j 4 modules && make && sudo make modules_install && sudo make install
       - this command took hours to complete so I left it running overnight
       - j 4 option is to specify that I want to use four cores to run the make modules
