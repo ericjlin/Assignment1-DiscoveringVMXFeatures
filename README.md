@@ -1,5 +1,6 @@
 # Assignment1-DiscoveringVMXFeatures
 CMPE 283 Assignment 1
+Eric Lin
 
 1. I did this assignment by myself.
 
