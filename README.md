@@ -2,9 +2,10 @@
 CMPE 283 Assignment 1
 Eric Lin
 
-1. I did this assignment by myself.
+###1. Work Distribution
+  - I did this assignment by myself.
 
-2. Steps taken to setup environment:
+###2. Steps taken to setup environment:
 
   Assignment 1:
 
