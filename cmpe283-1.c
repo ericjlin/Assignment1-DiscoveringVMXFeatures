@@ -7,6 +7,8 @@
 
 #define MAX_MSG 80
 
+MODULE_LICENSE("GPL");
+
 /*
  * Model specific registers (MSRs) by the module.
  * See SDM volume 4, section 2.1
