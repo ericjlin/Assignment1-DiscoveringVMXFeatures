@@ -40,7 +40,7 @@ Eric Lin
   7. Build your environment referencing https://wiki.ubuntu.com/Kernel/BuildYourOwnKernel. 
      This will install all tools such as "make" and gcc needed to build a kernel.
       - sudo apt-get build-dep linux linux-image-$(uname -r)
-      - sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
+      - sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf    
 
   8. Logged into GitHub in the guest VM. Create a new repository and git clone the repository into my VM.
 
@@ -58,6 +58,9 @@ Eric Lin
   13. Then run "sudo dmesg" to view the output.
 
   14. To remove the kerbel module run "sudo rmmod cmpe283-1.ko".
+  15. Sample output:
+  ![alt text](https://github.com/ericjlin/Assignment1-DiscoveringVMXFeatures/blob/main/dmesg_output1.png)
+  ![alt text](https://github.com/ericjlin/Assignment1-DiscoveringVMXFeatures/blob/main/dmesg_output2.png)
 
   Assignment 2 Setup:
 
@@ -68,3 +71,7 @@ Eric Lin
   5. make -j 4 modules && make && sudo make modules_install && sudo make install
       - this command took hours to complete so I left it running overnight
       - j 4 option is to specify that I want to use four cores to run the make modules
+      - Issue: I ran into the issue in building the kernel for the first time and recieve this message: "make[2]: *** No rule to make target 'debian/certs/benh@debian.org.cert.pem', needed by 'certs/x509_certificate_list'.  Stop."
+        - Resolved the issue by going to the .config file in linux repository and commenting out the lines CONFIG_SYSTEM_TRUSTED_KEY and CONFIG_MODUEL_SIG_KEY
+  6. Reboot the computer to boot into new linux version
+      - Version in my computer is 5.12.0-rc5+
